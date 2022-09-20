@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject GO_enemys;
 
+    private bool game_paused;
+    public GameObject PauseCanvas;
+
     public int en_in_list;
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,22 @@ public class GameManager : MonoBehaviour
         if (Enemy_list.Count < en_in_list)
         {
             new_enemy();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) //&& game_over != true)
+        {
+            //Debug.Log("PAUSED");
+
+            if (game_paused == false)
+            {
+                OnPause();
+            }
+            else
+            {
+                OffPause();
+            }
+            //Debug.Log(Time.timeScale);
+            //Time.timeScale = 0f;
         }
     }
 
@@ -70,6 +89,19 @@ public class GameManager : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+    }
+    public void OnPause()
+    {
+        game_paused = true;
+        Time.timeScale = 0f;
+        PauseCanvas.SetActive(true);
+    }
+
+    public void OffPause()
+    {
+        game_paused = false;
+        Time.timeScale = 1;
+        PauseCanvas.SetActive(false);
     }
 
     public static int Time_seed()
