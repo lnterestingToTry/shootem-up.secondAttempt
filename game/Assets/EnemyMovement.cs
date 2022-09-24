@@ -6,13 +6,14 @@ public class EnemyMovement : MonoBehaviour
 {
     public Vector2 move;
     Rigidbody2D rigidbody_;
+    public float speed;
 
     void Start()
     {
         //Random.InitState(Time_seed());
         rigidbody_ = transform.GetComponent<Rigidbody2D>();
         //move = new Vector2(Random.Range(-10, 10), -20);
-        move[1] = -50;
+        //move[1] = -50;
     }
 
     void Update()

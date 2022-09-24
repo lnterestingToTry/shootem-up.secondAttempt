@@ -16,9 +16,14 @@ public class EnemyShooting : MonoBehaviour
 
     public int b_size_mult;
     public int b_speed;
+
+    public GameObject player_obj_link;
+    public Transform player_transform;
+
     // Start is called before the first frame update
     void Start()
     {
+        player_transform = player_obj_link.GetComponent<Transform>();
         //firerate = 0.5f;
         //b_speed = 70;
     }
@@ -28,9 +33,12 @@ public class EnemyShooting : MonoBehaviour
     {
         if (Time.time - last_shoot_time > 1.0f / firerate)
         {
-            initBullet();
-            //Debug.Log("FINE");
-            last_shoot_time = Time.time;
+            if(gameObject.transform.position[0] < player_transform.position[0] + 0.3f && player_transform.position[0] - 0.3f < gameObject.transform.position[0])
+            {
+                initBullet();
+                //Debug.Log("FINE");
+                last_shoot_time = Time.time;
+            }
         }
     }
 

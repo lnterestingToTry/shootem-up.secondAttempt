@@ -30,6 +30,8 @@ public class Shooting : MonoBehaviour
 
     private List<List<Vector2>> shoot_style;
 
+    public UIshootStyle UIanim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +70,7 @@ public class Shooting : MonoBehaviour
                 last_shoot_time = Time.time;
             }
         }
+        UIanim.current = p_now;
     }
 
     void initBullet(int i)
