@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour
     public int p_now;
 
     public int b_size_mult;
-    public int b_speed;
+    public int b_speed_mult;
 
     private List<List<Vector2>> shoot_style;
 
@@ -78,7 +78,10 @@ public class Shooting : MonoBehaviour
         GameObject b = Instantiate(bullets[2], points[p_now][i].transform.position, new Quaternion(0, 0, 0, 0), allBullets.transform);
         Bullet scr = b.GetComponent<Bullet>();
         scr.move = shoot_style[p_now][i];
-        scr.speed = sh_st_speed[p_now];
+
+        scr.speed = sh_st_speed[p_now] * b_speed_mult;
+        b.transform.localScale *= b_size_mult;
+
         b.transform.rotation = Quaternion.Euler(0, 0, sh_st_rotation[p_now][i]);
     }
 }

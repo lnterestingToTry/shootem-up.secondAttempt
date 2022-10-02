@@ -30,11 +30,14 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("0")) //enemy
         {
             Destroy(gameObject);
+            collision.gameObject.GetComponent<Health>().hp -= 1;
         }
         if (collision.gameObject.CompareTag("2")) //enemy
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            //Destroy(gameObject);
             Destroy(gameObject);
+            collision.gameObject.GetComponent<Health>().hp -= 1;
         }
     }
 }

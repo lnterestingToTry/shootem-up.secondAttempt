@@ -7,8 +7,11 @@ public class Movement : MonoBehaviour
     Rigidbody2D rigidbody_;
     Vector2 move_in;
     public float speed;
+    public float speed_mult;
+
     void Start()
     {
+        speed_mult = 1;
         rigidbody_ = transform.GetComponent<Rigidbody2D>();
     }
 
@@ -68,7 +71,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        rigidbody_.velocity = move_in * speed * Time.deltaTime;
+        rigidbody_.velocity = speed_mult * move_in * speed * Time.deltaTime;
         move_in = new Vector2(0f, 0f);
     }
 }

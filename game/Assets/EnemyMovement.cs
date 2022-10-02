@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        rigidbody_.velocity = move * Time.deltaTime;
+        rigidbody_.velocity = speed * move * Time.deltaTime;
     }
 
     public static int Time_seed()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5013609925255950974}
   - component: {fileID: 5013609925255950973}
   - component: {fileID: 1605967358}
+  - component: {fileID: 4003488615794519742}
   m_Layer: 0
   m_Name: e_Bullet1
   m_TagString: 2
@@ -145,5 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  speed_multiplier: 0
+  speed_multiplier: 1.6
   move: {x: 0, y: 0}
+--- !u!114 &4003488615794519742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882551142743657827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636279e9fb8da0d469591c8273ec87a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 4

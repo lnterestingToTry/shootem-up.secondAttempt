@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class Animation : MonoBehaviour
 {
-    private Image SR;
+    private SpriteRenderer SR;
     public List<Sprite> anim_list;
 
     private float last_update;
     public float delay_per_frame;
     private int frame;
-    
+
+    public float delay_before_delate;
+
     public bool need_to_destroy;
 
     // Start is called before the first frame update
     void Start()
     {
-        SR = GetComponent<Image>();
+        SR = GetComponent<SpriteRenderer>();
         //delay_per_frame = 0.2f;
     }
 
@@ -37,7 +39,7 @@ public class Animation : MonoBehaviour
         }
         else if(need_to_destroy == true)
         {
-            Destroy(gameObject, delay_per_frame);
+            Destroy(gameObject, delay_before_delate);
         }
         else
         {

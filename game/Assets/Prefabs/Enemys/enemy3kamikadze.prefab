@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6375230603546938570}
   - component: {fileID: 6375230603546938571}
   - component: {fileID: 6925566875288977892}
+  - component: {fileID: 2959110257033090298}
   m_Layer: 0
   m_Name: enemy3kamikadze
   m_TagString: 0
@@ -167,3 +168,18 @@ MonoBehaviour:
   bullet_type: 0
   b_size_mult: 0
   b_speed: 80
+  player_obj_link: {fileID: 0}
+  player_transform: {fileID: 0}
+--- !u!114 &2959110257033090298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375230603546938574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636279e9fb8da0d469591c8273ec87a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 6

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public int to_spawn;
 
     public List<GameObject> new_wave_warning;
-    public GameObject ForWarningsCanvas;
+    public GameObject WarningRprefab;
 
     public int en_in_list;
     // Start is called before the first frame update
@@ -44,28 +44,36 @@ public class GameManager : MonoBehaviour
 
         pointsToSpawnE = new List<List<GameObject>> { pointsToSpLeft, pointsToSpCenter, pointsToSpRight };
 
-        moveE = new List<List<int>> { new List<int> {0,  10}, new List<int> { -10, 10 }, new List<int> { -10, 0 } };
+        moveE = new List<List<int>> { new List<int> {0,  20}, new List<int> { -20, 20 }, new List<int> { -20, 0 } };
         Random.InitState(Time_seed());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (to_spawn > 0)
+        if (Time.timeScale != 0)
         {
-            new_enemy(to_spawn);
-            to_spawn = 0;
-
-            if (Random.Range(0, 100) < 10)
+            if (to_spawn > 0)
             {
-                new_meteor(Random.Range(1, 3));
+                new_enemy(to_spawn);
+                to_spawn = 0;
             }
-        }
-        
-        if (Time.time - last_wave > wave_delay)
-        {
-            last_wave = Time.time;
-            to_spawn = 3;
+
+            if (Random.Range(0, 300) < 1)
+            {
+                new_meteor(Random.Range(1, 2));
+            }
+
+            if (Random.Range(0, 250) < 1 || (player.transform.position[0] < -2.8 || player.transform.position[0] > 2.8))
+            {
+                new_rocket();
+            }
+
+            if (Time.time - last_wave > wave_delay)
+            {
+                last_wave = Time.time;
+                to_spawn = 3;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) //&& game_over != true)
@@ -99,10 +107,12 @@ public class GameManager : MonoBehaviour
 
             scr_m.move = new Vector2(Random.Range(moveE[side_to_spawn][0],
                                                 moveE[side_to_spawn][1]), Random.Range(-60, -45));
+            scr_m.speed = 1;
+
             scr_sh.allBullets = allBullets;
             scr_sh.player_obj_link = player;
 
-            Enemy_list.Add(enemy);
+            //Enemy_list.Add(enemy);
 
             side_to_spawn = Random.Range(0, 3);
             spawn_point = Random.Range(0, pointsToSpawnE[side_to_spawn].Count);
@@ -122,7 +132,8 @@ public class GameManager : MonoBehaviour
             //EnemyShooting scr_sh = meteorit.GetComponent<EnemyShooting>();
 
             scr_m.move = new Vector2(Random.Range(moveE[side_to_spawn][0],
-                                                moveE[side_to_spawn][1]), Random.Range(-60, -45));
+                                                moveE[side_to_spawn][1]), Random.Range(-80, -45));
+            scr_m.speed = 1;
             //scr_sh.allBullets = allBullets;
 
             Enemy_list.Add(meteorit);
@@ -132,18 +143,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void new_rocket()
+    {
+        int side_to_spawn = Random.Range(0, 3);
+        int spawn_point = Random.Range(0, pointsToSpawnE[side_to_spawn].Count);
+
+        for (int i = 0; i <= to_spawn; i += 1)
+        {
+            GameObject rocket = Instantiate(WarningRprefab, new Vector3(player.transform.position[0], 3.2f, -1), new Quaternion(0, 0, 0, 0), GO_enemys.transform);
+
+            EnemyMovement scr_m = rocket.GetComponent<EnemyMovement>();
+            WarningScript scr_warn = rocket.GetComponent<WarningScript>();
+
+            scr_warn.player_tr_link = player.transform;
+
+            //EnemyShooting scr_sh = meteorit.GetComponent<EnemyShooting>();
+
+            //scr_m.move = new Vector2(Random.Range(moveE[side_to_spawn][0],
+            //                                    moveE[side_to_spawn][1]), Random.Range(-60, -45));
+            //scr_sh.allBullets = allBullets;
+
+            //Enemy_list.Add(rocket);
+
+            //side_to_spawn = Random.Range(0, 3);
+            //spawn_point = Random.Range(0, pointsToSpawnE[side_to_spawn].Count);
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("0")) //enemy
         {
-            Destroy(collision.gameObject);
-            Enemy_list.Remove(collision.gameObject);
+            //Destroy(collision.gameObject);
+            //Enemy_list.Remove(collision.gameObject);
+            removeEnemy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("1")) //bullet
         {
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("5")) //backLine
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
+    public void removeEnemy(GameObject enemy)
+    {
+        Destroy(enemy);
+        //Enemy_list.Remove(enemy);
     }
 
     public void OnPause()
@@ -170,6 +220,11 @@ public class GameManager : MonoBehaviour
     {
         ToMainMenuCanvas.SetActive(false);
         PauseCanvas.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
     }
 
     public static int Time_seed()

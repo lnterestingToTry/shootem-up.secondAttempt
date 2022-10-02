@@ -57,16 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Animation.cs" />
+    <Compile Include="Assets\BackLine.cs" />
     <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\EnemyBullet.cs" />
     <Compile Include="Assets\EnemyMovement.cs" />
     <Compile Include="Assets\EnemyShooting.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\Health.cs" />
+    <Compile Include="Assets\LinesManager.cs" />
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\SceneChanger.cs" />
     <Compile Include="Assets\SettingsKeeper.cs" />
     <Compile Include="Assets\Shooting.cs" />
+    <Compile Include="Assets\TempController.cs" />
+    <Compile Include="Assets\TempPickup.cs" />
     <Compile Include="Assets\UIshootStyle.cs" />
+    <Compile Include="Assets\WarningScript.cs" />
+    <Compile Include="Assets\drop.cs" />
     <Compile Include="Assets\meteor.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public int speed;
-    public int speed_multiplier;
+    public float speed_multiplier;
 
     public Vector2 move;
 
@@ -22,18 +22,18 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody_.velocity = move * speed * Time.deltaTime;
+        rigidbody_.velocity = speed_multiplier * move * speed * Time.deltaTime;
         if (transform.position[1] < -6.4)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("3")) //enemy
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("3")) //player
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

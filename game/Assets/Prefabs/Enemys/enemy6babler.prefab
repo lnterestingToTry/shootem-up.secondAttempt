@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7845783916895943276}
   - component: {fileID: 7845783916895943277}
   - component: {fileID: 6089995837593401154}
+  - component: {fileID: -4897821526126741790}
   m_Layer: 0
   m_Name: enemy6babler
   m_TagString: 0
@@ -167,3 +168,18 @@ MonoBehaviour:
   bullet_type: 1
   b_size_mult: 0
   b_speed: 65
+  player_obj_link: {fileID: 0}
+  player_transform: {fileID: 0}
+--- !u!114 &-4897821526126741790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845783916895943272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636279e9fb8da0d469591c8273ec87a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 4
