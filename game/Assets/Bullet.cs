@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             collision.gameObject.GetComponent<Health>().hp -= 1;
         }
-        if (collision.gameObject.CompareTag("2")) //enemy
+        if (collision.gameObject.CompareTag("2")) //enemyBullet
         {
             //Destroy(collision.gameObject);
             //Destroy(gameObject);

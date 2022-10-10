@@ -21,7 +21,7 @@ public class BackLine : MonoBehaviour
 
         SR.sprite = images[Random.Range(0, images.Count)];
 
-        alphaMinus = Random.Range(0.01f, 0.04f);
+        alphaMinus = Random.Range(0.01f, 0.03f);
     }
 
     // Update is called once per frame

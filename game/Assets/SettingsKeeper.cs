@@ -9,7 +9,7 @@ using System;
 
 [Serializable]
 
-public class Data
+public class _Data_
 {
     public int record_score;
     public float music_value, effects_value;
@@ -51,7 +51,7 @@ public class SettingsKeeper : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath
           + "/progress.dat");
-        Data data = new Data();
+        _Data_ data = new _Data_();
 
         data.record_score = record_score;
         data.music_value = music_value;
@@ -71,7 +71,7 @@ public class SettingsKeeper : MonoBehaviour
               File.Open(Application.persistentDataPath
               + "/progress.dat", FileMode.Open);
 
-            Data data = (Data)bf.Deserialize(file);
+            _Data_ data = (_Data_)bf.Deserialize(file);
             file.Close();
 
             record_score = data.record_score;

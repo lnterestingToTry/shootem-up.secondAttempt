@@ -75,7 +75,7 @@ public class Shooting : MonoBehaviour
 
     void initBullet(int i)
     {
-        GameObject b = Instantiate(bullets[2], points[p_now][i].transform.position, new Quaternion(0, 0, 0, 0), allBullets.transform);
+        GameObject b = Instantiate(bullets[1], points[p_now][i].transform.position, new Quaternion(0, 0, 0, 0), allBullets.transform);
         Bullet scr = b.GetComponent<Bullet>();
         scr.move = shoot_style[p_now][i];
 

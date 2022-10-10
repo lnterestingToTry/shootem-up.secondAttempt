@@ -5,9 +5,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int hp;
+    public float multiplier;
     void Start()
     {
-        
+        hp = (int)(hp * multiplier);
     }
 
     // Update is called once per frame

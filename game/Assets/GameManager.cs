@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,7 +35,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> new_wave_warning;
     public GameObject WarningRprefab;
 
-    public int en_in_list;
+    public float multiplier;
+    public int multiplierIncrease;
+
+    public Text multiplierLabel;
+
+    //МНОЖИТЕЛЬ, ПРОТИВНИКИ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +53,11 @@ public class GameManager : MonoBehaviour
 
         moveE = new List<List<int>> { new List<int> {0,  20}, new List<int> { -20, 20 }, new List<int> { -20, 0 } };
         Random.InitState(Time_seed());
+
+        multiplier = 1;
+        multiplierIncrease = 0;
+
+        multiplierChanged(0);
     }
 
     // Update is called once per frame
@@ -64,7 +76,7 @@ public class GameManager : MonoBehaviour
                 new_meteor(Random.Range(1, 2));
             }
 
-            if (Random.Range(0, 250) < 1 || (player.transform.position[0] < -2.8 || player.transform.position[0] > 2.8))
+            if (Random.Range(0, 250) < 1 || (player.transform.position[0] < -2.6 || player.transform.position[0] > 2.6))
             {
                 new_rocket();
             }
@@ -73,6 +85,13 @@ public class GameManager : MonoBehaviour
             {
                 last_wave = Time.time;
                 to_spawn = 3;
+            }
+
+            multiplierIncrease += 1;
+            if (multiplierIncrease >= 1000)
+            {
+                multiplierIncrease = 0;
+                multiplierChanged(0.2f);
             }
         }
 
@@ -100,10 +119,13 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i <= to_spawn; i += 1)
         {
-            GameObject enemy = Instantiate(Enemy_prefabs[Random.Range(0, Enemy_prefabs.Count - 1)], pointsToSpawnE[side_to_spawn][spawn_point].transform.position, new Quaternion(0, 0, 0, 0), GO_enemys.transform);
+            GameObject enemy = Instantiate(Enemy_prefabs[Random.Range(0, Enemy_prefabs.Count)], pointsToSpawnE[side_to_spawn][spawn_point].transform.position, new Quaternion(0, 0, 0, 0), GO_enemys.transform);
 
             EnemyMovement scr_m = enemy.GetComponent<EnemyMovement>();
             EnemyShooting scr_sh = enemy.GetComponent<EnemyShooting>();
+            Health scr_h = enemy.GetComponent<Health>();
+
+            scr_h.multiplier = multiplier;
 
             scr_m.move = new Vector2(Random.Range(moveE[side_to_spawn][0],
                                                 moveE[side_to_spawn][1]), Random.Range(-60, -45));
@@ -129,6 +151,9 @@ public class GameManager : MonoBehaviour
             GameObject meteorit = Instantiate(meteor, pointsToSpawnE[side_to_spawn][spawn_point].transform.position, new Quaternion(0, 0, 0, 0), GO_enemys.transform);
 
             EnemyMovement scr_m = meteorit.GetComponent<EnemyMovement>();
+            Health scr_h = meteorit.GetComponent<Health>();
+
+            scr_h.multiplier = multiplier;
             //EnemyShooting scr_sh = meteorit.GetComponent<EnemyShooting>();
 
             scr_m.move = new Vector2(Random.Range(moveE[side_to_spawn][0],
@@ -154,6 +179,7 @@ public class GameManager : MonoBehaviour
 
             EnemyMovement scr_m = rocket.GetComponent<EnemyMovement>();
             WarningScript scr_warn = rocket.GetComponent<WarningScript>();
+
 
             scr_warn.player_tr_link = player.transform;
 
@@ -224,11 +250,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     public static int Time_seed()
     {
         return System.DateTime.UtcNow.GetHashCode();
+    }
+
+    public void multiplierChanged(float value)
+    {
+        multiplier += value;
+        multiplierLabel.text = "X" + multiplier.ToString();
     }
 }
