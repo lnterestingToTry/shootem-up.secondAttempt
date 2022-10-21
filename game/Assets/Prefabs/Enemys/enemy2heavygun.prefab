@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 4378713251151777259}
   - component: {fileID: 333689225987752132}
   - component: {fileID: -2992422858803654929}
+  - component: {fileID: -4151052424897870529}
+  - component: {fileID: 1310434200066769806}
   m_Layer: 0
   m_Name: enemy2heavygun
   m_TagString: 0
@@ -238,11 +240,11 @@ MonoBehaviour:
   - {fileID: 5196668618887877207, guid: e3217994972fe0b43927ce024b5a797e, type: 3}
   allBullets: {fileID: 0}
   firerate: 2
-  bullet_type: 1
+  bullet_type: 0
   b_size_mult: 0
   b_speed: 120
   player_obj_link: {fileID: 0}
-  player_transform: {fileID: 0}
+  shootXrange: 0.2
 --- !u!114 &-2992422858803654929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,3 +259,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   multiplier: 0
+  expl: {fileID: 3243405183911659720, guid: 4c19d824d3592c84eae4be3e4b43ed88, type: 3}
+--- !u!114 &-4151052424897870529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378713251151777262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad5709b04826ca4b8fc04546edca906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points_to_plus: 2
+--- !u!114 &1310434200066769806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378713251151777262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.010038791, y: -0.029886967, z: 0}
+  - {x: 0.010054659, y: -0.029937655, z: 0}
+  - {x: 0.030004341, y: 0.02000217, z: 0}
+  - {x: -0.030010184, y: 0.019993396, z: 0}
+  m_ShapePathHash: -1781169606
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -210800

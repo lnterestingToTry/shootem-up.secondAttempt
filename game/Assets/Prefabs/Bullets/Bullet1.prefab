@@ -148,7 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   speed_multiplier: 0
+  particle: {fileID: 0}
   move: {x: 0, y: 0}
+  expl: {fileID: 3669265790062076772, guid: 90523f8056130af489e55318495b3b62, type: 3}
 --- !u!114 &2153590088007429146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +171,8 @@ MonoBehaviour:
   delay_per_frame: 0.1
   delay_before_delate: 0
   need_to_destroy: 0
+  loop: 0
+  needToPlay: 0
 --- !u!1 &7462722092272278161
 GameObject:
   m_ObjectHideFlags: 0

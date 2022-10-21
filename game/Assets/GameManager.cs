@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 30;
+        Time.timeScale = 1f;
+
         last_wave = 0;
         wave_delay = 4.5f;
         to_spawn = 3;
@@ -60,7 +63,6 @@ public class GameManager : MonoBehaviour
         multiplierChanged(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.timeScale != 0)
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
                 new_meteor(Random.Range(1, 2));
             }
 
-            if (Random.Range(0, 250) < 1 || (player.transform.position[0] < -2.6 || player.transform.position[0] > 2.6))
+            if (Random.Range(0, 250) < 1 || (player.transform.position[0] < -2.5 || player.transform.position[0] > 2.5))
             {
                 new_rocket();
             }
@@ -218,7 +220,7 @@ public class GameManager : MonoBehaviour
 
     public void removeEnemy(GameObject enemy)
     {
-        Destroy(enemy);
+        Destroy(enemy, 1f);
         //Enemy_list.Remove(enemy);
     }
 

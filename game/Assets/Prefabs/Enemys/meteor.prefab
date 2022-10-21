@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3242127626971511534}
   - component: {fileID: 9028028028740784553}
   - component: {fileID: 8715578510684093394}
+  - component: {fileID: -9028553881445249541}
   m_Layer: 0
   m_Name: meteor
   m_TagString: 0
@@ -177,3 +178,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 15
   multiplier: 0
+  expl: {fileID: 3243405183911659720, guid: 4c19d824d3592c84eae4be3e4b43ed88, type: 3}
+--- !u!114 &-9028553881445249541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242127626971511531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.006947593, y: -0.047202088, z: 0}
+  - {x: 0.038747426, y: -0.038258836, z: 0}
+  - {x: 0.05004391, y: -0.0028229319, z: 0}
+  - {x: 0.029152766, y: 0.040322457, z: 0}
+  - {x: -0.009162954, y: 0.05011365, z: 0}
+  - {x: -0.05007938, y: 0.020964736, z: 0}
+  - {x: -0.03976898, y: -0.027746078, z: 0}
+  m_ShapePathHash: 475557440
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -255348
