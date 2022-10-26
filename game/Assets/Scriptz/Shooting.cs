@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public List<GameObject> bullets;
+    public int current_bullet;
+    public float currBulletTime, currBulletInUpdateTime;
 
     public GameObject allBullets;
 
@@ -37,7 +39,7 @@ public class Shooting : MonoBehaviour
     {
         sh_st_speed = new List<int> {70, 50, 40, 60, 60};
 
-        sh_st_firerate = new List<float> {1, 2, 1, 3, 3 };
+        sh_st_firerate = new List<float> {4, 2, 1, 3, 3 };
 
         shoot_style = new List<List<Vector2>> { new List<Vector2> { new Vector2(0, 1) },
         new List<Vector2> { new Vector2(-1, 1), new Vector2(0, 1), new Vector2(1, 1) },
@@ -53,6 +55,9 @@ public class Shooting : MonoBehaviour
                                               new List<int> {65, 50, 0, -50, -65 }};
 
         points = new List<List<GameObject>> {p1, p2, p3, p4, p5 };
+
+        currBulletTime = 10;
+        currBulletInUpdateTime = 0;
         //p_now = 0;
     }
 
@@ -70,12 +75,22 @@ public class Shooting : MonoBehaviour
                 last_shoot_time = Time.time;
             }
         }
+
+        if (current_bullet > 0)
+        {
+            if (Time.time - currBulletInUpdateTime > currBulletTime)
+            {
+                current_bullet -= 1;
+                currBulletInUpdateTime = Time.time;
+            }
+        }
+
         UIanim.current = p_now;
     }
 
     void initBullet(int i)
     {
-        GameObject b = Instantiate(bullets[1], points[p_now][i].transform.position, new Quaternion(0, 0, 0, 0), allBullets.transform);
+        GameObject b = Instantiate(bullets[current_bullet], points[p_now][i].transform.position, new Quaternion(0, 0, 0, 0), allBullets.transform);
         Bullet scr = b.GetComponent<Bullet>();
         scr.move = shoot_style[p_now][i];
 
@@ -83,5 +98,19 @@ public class Shooting : MonoBehaviour
         b.transform.localScale *= b_size_mult;
 
         b.transform.rotation = Quaternion.Euler(0, 0, sh_st_rotation[p_now][i]);
+    }
+
+    public void bulletUpgrade(float time)
+    {
+        currBulletTime = time;
+        if (current_bullet < 2)
+        {
+            current_bullet += 1;
+            currBulletInUpdateTime = Time.time;
+        }
+        else
+        {
+            currBulletInUpdateTime = Time.time;
+        }
     }
 }

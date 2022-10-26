@@ -61,7 +61,9 @@
     <Compile Include="Assets\EnemyComandor.cs" />
     <Compile Include="Assets\FPS.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\Image.cs" />
     <Compile Include="Assets\MinionBounds.cs" />
+    <Compile Include="Assets\MultiplierMaskEffect.cs" />
     <Compile Include="Assets\PowerPointPlus.cs" />
     <Compile Include="Assets\PowerSpawn.cs" />
     <Compile Include="Assets\PushEnemy3.cs" />
@@ -87,6 +89,10 @@
     <Compile Include="Assets\Scriptz\WarningScript.cs" />
     <Compile Include="Assets\Scriptz\drop.cs" />
     <Compile Include="Assets\Scriptz\meteor.cs" />
+    <Compile Include="Assets\ShootSPickup.cs" />
+    <Compile Include="Assets\TimeLeftIndicatorUI.cs" />
+    <Compile Include="Assets\UIPowerUp.cs" />
+    <Compile Include="Assets\UI_AnimElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -56,7 +56,7 @@ public class WarningScript : MonoBehaviour
             Destroy(gameObject, delay_before_delate);
             if (triggered == false)
             {
-                GameObject enemy = Instantiate(Rocket, new Vector3(player_tr_link.position[0], 5, -1), new Quaternion(0, 0, 0, 0));
+                GameObject enemy = Instantiate(Rocket, new Vector3(player_tr_link.position[0], 5, -1), new Quaternion(0, 0, 0, 0), transform.parent.gameObject.transform);
                 Destroy(gameObject, delay_before_delate);
 
                 triggered = true;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIshootStyle : MonoBehaviour
 {
-    private Image SR;
+    public UnityEngine.UI.Image SR;
     public List<List<Sprite>> anim_list;
 
     public List<Sprite> anim1;
@@ -23,7 +23,7 @@ public class UIshootStyle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SR = GetComponent<Image>();
+        SR = GetComponent<UnityEngine.UI.Image>();
         //delay_per_frame = 0.2f;
         anim_list = new List<List<Sprite>> { anim1, anim5, anim4, anim3, anim2};
     }

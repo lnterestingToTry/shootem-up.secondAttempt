@@ -24,7 +24,8 @@ public class PowerPointPlus : MonoBehaviour
         if (scr_h.hp <= 0)
         {
             PowerSpawn scr = GetComponentInParent<PowerSpawn>();
-            scr.counter += points_to_plus;
+            scr.powerCounter += points_to_plus;
+            scr.ShootSCounter += points_to_plus;
         }
     }
 }

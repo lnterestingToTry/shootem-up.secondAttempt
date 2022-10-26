@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class PowerSpawn : MonoBehaviour
 {
-    public GameObject pickupPrefab;
+    public GameObject PowerPickUp, ShootSPickUp;
 
     public List<GameObject> pointsToSpawn;
 
-    public int counter, counter_trigger;
+    public int powerCounter, PowerCounter_trigger, ShootSCounter, ShootSCounterTrigger;
 
     void Start()
     {
-        counter = 0;
-        counter_trigger = 100;
+        powerCounter = 0;
+        PowerCounter_trigger = 100;
     }
 
     void Update()
     {
-        if (counter >= counter_trigger)
+        if (powerCounter >= PowerCounter_trigger)
         {
-            Instantiate(pickupPrefab, pointsToSpawn[ Random.Range(0,  pointsToSpawn.Count) ].transform.position, new Quaternion(0, 0, 0, 0), gameObject.transform);
-            counter = 0;
+            Instantiate(PowerPickUp, pointsToSpawn[ Random.Range(0,  pointsToSpawn.Count) ].transform.position, new Quaternion(0, 0, 0, 0), gameObject.transform);
+            powerCounter = 0;
+        }
+
+        if(ShootSCounter >= ShootSCounterTrigger)
+        {
+            Instantiate(ShootSPickUp, pointsToSpawn[Random.Range(0, pointsToSpawn.Count)].transform.position, new Quaternion(0, 0, 0, 0), gameObject.transform);
+            ShootSCounter = 0;
         }
     }
 }

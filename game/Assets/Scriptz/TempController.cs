@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TempController : MonoBehaviour
 {
-
     public GameManager gm_script;
 
     Movement movement_script;
@@ -19,6 +18,10 @@ public class TempController : MonoBehaviour
     public List<float> actual;
 
     public List<bool> tempActivate;
+
+
+    public GameObject UI_obj;
+    public UIPowerUp UIPowerUp_scr;
 
     void Start()
     {
@@ -59,7 +62,10 @@ public class TempController : MonoBehaviour
 
     void activate(int index)
     {
-        switch(index)
+        UIPowerUp_scr.current = index;
+        UI_obj.SetActive(true);
+
+        switch (index)
         {
             case(0):
                 shooting_script.b_speed_mult = 2;
@@ -81,6 +87,9 @@ public class TempController : MonoBehaviour
 
     void DEactivate(int index)
     {
+        //UIPowerUp_scr.current = index;
+        UI_obj.SetActive(false);
+
         switch (index)
         {
             case (0):
@@ -117,7 +126,6 @@ public class TempController : MonoBehaviour
             Destroy(bable_p, 1f);
 
             Destroy(collision.gameObject);
-
         }
     }
 }
